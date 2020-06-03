@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhzh.sys.handler.dao.EtainedMapper">
+    <resultMap id="BaseResultMap" type="com.lhzh.sys.handler.entity.EetainedVo">
+        <result column="activateNew" jdbcType="INTEGER" property="activateNew" />
+        <result column="days" jdbcType="VARCHAR" property="theday" />
+    </resultMap>
+
+    <select id="activateNewByday"  parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT count(*) as activateNew,DATE_FORMAT(FROM_UNIXTIME(activationTime),'%Y-%m-%d') as days
+        FROM zhu_equipment
+        WHERE isType =1
+        AND activationTime &gt;= #{starttime}
+        AND activationTime &lt; #{endtime}
+        GROUP BY days
+    </select>
+
+</mapper>

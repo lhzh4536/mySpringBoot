@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/js/echarts.js}"></script>
+    <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+</head>
+<body>
+    hello页面
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        myChart.setOption({
+            title: {
+                text: '折线图堆叠'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['新增设备']
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: []
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name: '新增设备',
+                    type: 'line',
+                    stack: '数量',
+                    data: []
+                }
+            ]
+        });
+
+
+        myChart.showLoading();
+        // 异步加载数据
+        var starttime = "2016-7-20";
+        var endtime = "2016-7-30";
+        $.get('[[@{/echarts/days?starttime=}]]'+starttime+'&endtime='+endtime).done(function (data) {
+           var days =[];
+           var actvalue=[];
+            for(d in data){
+                days.push(data[d].theday);
+                actvalue.push(data[d].activateNew);
+           }
+            console.log(days);
+            console.log(actvalue);
+            myChart.hideLoading();
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                    data: days
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '新增设备',
+                    data: actvalue
+                }]
+            });
+        });
+
+
+    </script>
+</body>
+</html>
