@@ -45,15 +45,31 @@ spring:
   redis:
     password: root
 #    host: 192.168.12.180:6380
-    sentinel:
-      master: mymaster
-      nodes:
-       - 192.168.12.180:26379
-       - 192.168.12.180:26380
-       - 192.168.12.180:26381
-
+#    sentinel:
+#      master: mymaster
+#      nodes:
+#       - 192.168.12.180:26379
+#       - 192.168.12.180:26380
+#       - 192.168.12.180:26381
+#    cluster:
+#      nodes:
+#       - 192.168.12.180:6479
+#       - 192.168.12.180:6480
+#       - 192.168.12.180:6481
+#  data:
+#    solr:
+#      host: http://192.168.12.163:8983/solr
 mybatis:
   mapper-locations: classpath:com/lhzh/*.xml
   type-aliases-package: com.lhzh
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+javasm:
+  producer:
+    groupName: javasm_producer
+    namesrvAddr: 192.168.12.97:9876
+  consumer:
+    groupName: javasm_consumer
+    namesrvAddr: 192.168.12.97:9876
+    topic: Gift_Topic

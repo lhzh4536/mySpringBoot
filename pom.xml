@@ -19,6 +19,11 @@
   </properties>
 
   <dependencies>
+  <!--工具包-->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
     <!--redis启动器-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -56,7 +61,7 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-log4j2</artifactId>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
+    <!-- 日志异步插件 -->
     <dependency>
       <groupId>com.lmax</groupId>
       <artifactId>disruptor</artifactId>
@@ -97,7 +102,17 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-
+    <!--rocketMQ-->
+    <dependency>
+      <groupId>org.apache.rocketmq</groupId>
+      <artifactId>rocketmq-client</artifactId>
+      <version>4.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.47</version>
+    </dependency>
     <!--thymeleaf引擎启动器-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -110,7 +125,12 @@
       <scope>runtime</scope>
       <optional>true</optional>
     </dependency>
-
+<!--solr-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-solr</artifactId>
+    </dependency>
+<!--测试类-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
