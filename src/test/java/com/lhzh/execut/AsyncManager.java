@@ -24,7 +24,8 @@ public class AsyncManager {
     //线程池初始化，规定线程池中 默认有几个线程
     public void init(int threadNum){
         //创建线程池的工厂
-        ThreadPoolTaskExecutor taskExecutor =new ThreadPoolTaskExecutor();
+//        ThreadPoolTaskExecutor taskExecutor =new ThreadPoolTaskExecutor();
+//        taskExecutor.setThreadNamePrefix("myThread_");
 
         this.executor = Executors.newFixedThreadPool(threadNum, new ThreadFactory() {
             //初始化线程池组
