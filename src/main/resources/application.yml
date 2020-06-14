@@ -44,6 +44,11 @@ spring:
       test-on-return: false
   redis:
     password: root
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
 #    host: 192.168.12.180:6380
 #    sentinel:
 #      master: mymaster
@@ -64,7 +69,7 @@ mybatis:
   type-aliases-package: com.lhzh
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
+#MQ
 javasm:
   producer:
     groupName: javasm_producer
