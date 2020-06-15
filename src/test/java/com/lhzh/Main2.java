@@ -20,10 +20,7 @@ public class Main2 {
         int num =0;
         for (int i=0;i<chars.length;){
             char aChar = chars[i];
-            if((aChar-'2')==0){
-                System.out.println("!error");
-                return;
-            }
+
             if(!isNum(aChar)&&!isLow(aChar)){
                 System.out.println("!error");
                 return;
@@ -35,6 +32,10 @@ public class Main2 {
             }else if (isLow(aChar)){
                 if(num==0){
                     num=1;
+                }
+                if(num==2){
+                    System.out.println("!error");
+                    return;
                 }
                 for (int a=1;a<=num;a++) {
                     stringBuilder.append(aChar);
